@@ -1,6 +1,12 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
+
+//  Add body-parser middleware
+//  More information here: https://expressjs.com/en/resources/middleware/body-parser.html
+//  And here: https://www.npmjs.com/package/body-parser
+app.use(bodyParser.json());
 
 //  Use port 3000 if the environment doesn't specify one
 
@@ -36,14 +42,16 @@ app.get('/api/items/:id', (request, response) => {
 app.post('/api/items', (request, response) => {
   response.send({
     on: new Date(),
-    message: 'POST successful'
+    message: 'POST successful',
+    body: request.body
   });
 });
 
 app.put('/api/items', (request, response) => {
   response.send({
     on: new Date(),
-    message: 'PUT successful'
+    message: 'PUT successful',
+    body: request.body
   });
 });
 
