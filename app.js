@@ -22,20 +22,35 @@ app.get('/', (request, response) => {
 
 //  api end-points
 
+//  Query parameters
 app.get('/api/items', (request, response) => {
+  const queryParameters = request.query;
   response.send({
     on: new Date(),
-    message: 'GET successful'
+    message: 'GET successful',
+    queryParameters
   });
 });
 
-app.get('/api/items/:id', (request, response) => {
+//  Regex in route parameters
+//  More information here: https://expressjs.com/en/guide/routing.html
+app.get('/api/items/:id([0-9]+)', (request, response) => {
   const id = +request.params.id;
 
   response.send({
     on: new Date(),
     message: 'GET successful',
     id
+  });
+});
+
+app.get('/api/items/:title(\\w+)', (request, response) => {
+  const title = request.params.title;
+
+  response.send({
+    on: new Date(),
+    message: 'GET successful',
+    title
   });
 });
 
@@ -55,7 +70,7 @@ app.put('/api/items', (request, response) => {
   });
 });
 
-app.delete('/api/items/:id', (request, response) => {
+app.delete('/api/items/:id([0-9]+)', (request, response) => {
   const id = +request.params.id;
   response.send({
     on: new Date(),
