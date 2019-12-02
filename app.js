@@ -14,5 +14,47 @@ app.get('/', (request, response) => {
   });
 });
 
+//  api end-points
+
+app.get('/api/items', (request, response) => {
+  response.send({
+    on: new Date(),
+    message: 'GET successful'
+  });
+});
+
+app.get('/api/items/:id', (request, response) => {
+  const id = +request.params.id;
+
+  response.send({
+    on: new Date(),
+    message: 'GET successful',
+    id
+  });
+});
+
+app.post('/api/items', (request, response) => {
+  response.send({
+    on: new Date(),
+    message: 'POST successful'
+  });
+});
+
+app.put('/api/items', (request, response) => {
+  response.send({
+    on: new Date(),
+    message: 'PUT successful'
+  });
+});
+
+app.delete('/api/items/:id', (request, response) => {
+  const id = +request.params.id;
+  response.send({
+    on: new Date(),
+    message: 'DELETE successful',
+    id
+  });
+});
+
 //  Listen to port
 app.listen(PORT);
