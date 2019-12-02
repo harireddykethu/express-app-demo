@@ -8,6 +8,12 @@ const app = express();
 //  And here: https://www.npmjs.com/package/body-parser
 app.use(bodyParser.json());
 
+//  Add static resource serving middleware
+//  nodejs.png is now available at http://localhost:3000/nodejs.png
+//  Do not add public in the url
+//  More information here: http://expressjs.com/en/starter/static-files.html#serving-static-files-in-express
+app.use(express.static('./public'));
+
 //  Use port 3000 if the environment doesn't specify one
 
 const PORT = process.env.PORT || 3000;
