@@ -58,6 +58,8 @@ router.get('/:title(\\w+)', (request, response) => {
 });
 
 router.post('/', (request, response) => {
+  console.log(request.headers);
+
   response.send({
     on: new Date(),
     message: 'POST successful',

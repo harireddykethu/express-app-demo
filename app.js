@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const apiRouter = require('./api-routes');
 const homeRouter = require('./home-routes');
+const cors = require('cors');
 
 const app = express();
 
@@ -15,6 +16,9 @@ app.use(bodyParser.json());
 //  Do not add public in the url
 //  More information here: http://expressjs.com/en/starter/static-files.html#serving-static-files-in-express
 app.use(express.static('./public'));
+
+//  Add cors
+app.use(cors());
 
 //  Make sure the routes are unique. In case of multiple matching routes, first route match wins.
 //  Adding home routing as middleware
