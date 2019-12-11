@@ -13,6 +13,18 @@ router.get('/', (request, response) => {
   });
 });
 
+router.get('/validate/:key', (request, response) => {
+  if (request.params.key === 'ABCDE') {
+    response.send({
+      valid: true
+    });
+  } else {
+    response.send({
+      valid: false
+    });
+  }
+});
+
 //  Regex in route parameters
 //  More information here: https://expressjs.com/en/guide/routing.html
 //  More information on Http Status Codes here: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
